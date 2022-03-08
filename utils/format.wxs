@@ -9,7 +9,21 @@ function formatCount(count) {
   }
 }
 
+function padLeftZero(time) {
+  time = time + ""
+  return ("00" + time).slice(time.length)
+}
+
+function formatDuration(duration) {
+  duration = duration / 1000
+  var minute = Math.floor(duration / 60)
+  var second = Math.floor(duration) % 60
+
+  return padLeftZero(minute) + ":" + padLeftZero(second) 
+}
+
 // common js
 module.exports = {
-  formatCount: formatCount
+  formatCount: formatCount,
+  formatDuration: formatDuration
 }

@@ -9,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topMVs: []
+    topMVs: [],
+    hasMore: true
   },
 
   /**
@@ -20,9 +21,11 @@ Page({
   //   const res = await getTopMVs(0)
   // },
   onLoad: function (options) {
-    getTopMVs(0).then(res => {
-      this.setData({topMVs: res.data})
-    })
+    // 第二种
+    // getTopMVs(0).then(res => {
+    //   this.setData({topMVs: res.data})
+    // })
+    // 第一种
     // hyRequest.get("/top/mv",{offset: 0, limit: 10}).then(res => {
     //   this.setData({topMVs: res.data.data})
     // })
@@ -41,6 +44,39 @@ Page({
   //       console.log(err)
   //     }
   //   })
+  // 第三种
+  this.getTopMVData(0)
     
   },
+  onPullDownRefresh: async function() {
+    // const res = await getTopMVs(0)
+    // this.setData({topMVs: res.data})
+    this.getTopMVData(0)
+  },
+
+  // 封装网络请求的方法
+  getTopMVData: async function(offset) {
+    // 判断是否可以请求
+    if(!this.data.hasMore && offset !== 0) return;
+    // 真正请求数据
+    const res = await getTopMVs(offset)
+    let newData = this.data.topMVs
+    if(offset === 0) {
+      newData = res.data
+    } else {
+      newData = newData.concat(res.data)
+    }
+    // 设置数据
+    this.setData({topMVs: newData})
+    this.setData({hasMore: res.hasMore})
+  },
+
+  // 其他生命周期函数
+  onReachBottom: async function() {
+    // if(!this.hasMore) return;
+    // const res = await getTopMVs(this.data.topMVs.length)
+    // this.setData({topMVs: this.data.topMVs.concat(res.data)})
+    // this.setData({hasMore: res.hasMore})
+    this.getTopMVData(this.data.topMVs.length)
+  }
 })

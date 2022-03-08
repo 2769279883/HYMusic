@@ -2,7 +2,7 @@ const BASE_URL = "http://123.207.32.32:9001"
 
 class HYRequest {
   
-  request(url, params, method) {
+  request(url, method, params) {
     return new Promise((resolve, reject) => {
       wx.request({
         url: BASE_URL + url,
