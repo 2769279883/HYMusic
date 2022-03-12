@@ -58,6 +58,11 @@ Page({
   getTopMVData: async function(offset) {
     // 判断是否可以请求
     if(!this.data.hasMore && offset !== 0) return;
+    // 加载动画
+    wx.showNavigationBarLoading()
+    // if(offset === 0) {
+    //   wx.startPullDownRefresh()
+    // }
     // 真正请求数据
     const res = await getTopMVs(offset)
     let newData = this.data.topMVs
@@ -69,6 +74,22 @@ Page({
     // 设置数据
     this.setData({topMVs: newData})
     this.setData({hasMore: res.hasMore})
+    // 删除动画
+    wx.hideNavigationBarLoading()
+    if(offset === 0) {
+      wx.stopPullDownRefresh()
+    }
+  },
+
+  // 封装事件处理的方法
+  handleItemClick: async function(event) {
+    // 获取id
+    const id =  event.currentTarget.dataset.item.id
+    console.log(id)
+    // 页面跳转
+    wx.navigateTo({
+      url: '/pages/detail-video/index',
+    })
   },
 
   // 其他生命周期函数
