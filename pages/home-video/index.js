@@ -88,7 +88,7 @@ Page({
     console.log(id)
     // 页面跳转
     wx.navigateTo({
-      url: '/pages/detail-video/index',
+      url: '/pages/detail-video/index?id=' + id,
     })
   },
 
