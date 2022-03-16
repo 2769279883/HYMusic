@@ -1,0 +1,23 @@
+{
+  "name": "personalProject",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2769279883/HYMusic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2769279883/HYMusic/issues"
+  },
+  "homepage": "https://github.com/2769279883/HYMusic#readme",
+  "dependencies": {
+    "@vant/weapp": "^1.10.2"
+  }
+}

@@ -12,7 +12,7 @@
     "minified": true,
     "newFeature": false,
     "coverView": true,
-    "nodeModules": false,
+    "nodeModules": true,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
@@ -21,9 +21,9 @@
     "checkSiteMap": false,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": false,
-    "useApiHostProcess": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -39,7 +39,7 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.22.1",
+  "libVersion": "2.20.3",
   "appid": "wx0d65de4344066c80",
   "projectname": "CYMusic",
   "debugOptions": {
